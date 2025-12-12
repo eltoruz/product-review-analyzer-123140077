@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const [shouldResetForm, setShouldResetForm] = useState(false); // Tambahkan state ini
 
   const fetchReviews = async () => {
     setLoadingReviews(true);
@@ -27,11 +28,13 @@ function App() {
     setLoading(true);
     setError("");
     setResult(null);
+    setShouldResetForm(false); // Reset flag
 
     const data = await analyzeReviewAPI(productName, reviewText);
     if (data.success) {
       setResult(data);
       fetchReviews();
+      setShouldResetForm(true); // Set flag untuk reset form hanya jika sukses
     } else {
       setError(data.error || "Something went wrong.");
     }
@@ -44,7 +47,12 @@ function App() {
 
       <main className="main-content">
         <section className="form-section">
-          <ReviewForm onSubmit={handleSubmit} loading={loading} error={error} />
+          <ReviewForm 
+            onSubmit={handleSubmit} 
+            loading={loading} 
+            error={error}
+            shouldReset={shouldResetForm} // Pass prop baru
+          />
           <AnalysisResult result={result} />
         </section>
 

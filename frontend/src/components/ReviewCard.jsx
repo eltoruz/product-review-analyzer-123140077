@@ -1,7 +1,6 @@
 import { formatDate } from "../utils/formatDate";
 import '../App.css';
 
-
 const ReviewCard = ({ review }) => {
   const keyPoints = review.key_points;
 
@@ -15,6 +14,18 @@ const ReviewCard = ({ review }) => {
       </div>
 
       <p className="review-text">{review.review_text}</p>
+
+      {/* Tambahkan Key Points Section */}
+      {keyPoints && Array.isArray(keyPoints) && keyPoints.length > 0 && (
+        <div className="key-points-section">
+          <h4>Key Points:</h4>
+          <ul className="key-points-list">
+            {keyPoints.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="review-footer">
         <span>{formatDate(review.created_at)}</span>

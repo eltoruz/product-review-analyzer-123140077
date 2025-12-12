@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '../App.css';
 
-const ReviewForm = ({ onSubmit, loading, error }) => {
+const ReviewForm = ({ onSubmit, loading, error, shouldReset }) => {
   const [productName, setProductName] = useState("");
   const [reviewText, setReviewText] = useState("");
+
+  // Reset form hanya ketika shouldReset menjadi true
+  useEffect(() => {
+    if (shouldReset) {
+      setProductName("");
+      setReviewText("");
+    }
+  }, [shouldReset]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(productName, reviewText);
-    setProductName("");
-    setReviewText("");
+    // JANGAN reset di sini lagi
   };
 
   return (
@@ -30,6 +37,7 @@ const ReviewForm = ({ onSubmit, loading, error }) => {
             value={productName}
             onChange={(e) => setProductName(e.target.value)}
             required
+            disabled={loading} // Disable saat loading
           />
         </div>
 
@@ -40,6 +48,7 @@ const ReviewForm = ({ onSubmit, loading, error }) => {
             onChange={(e) => setReviewText(e.target.value)}
             rows="5"
             required
+            disabled={loading} // Disable saat loading
           />
         </div>
 
