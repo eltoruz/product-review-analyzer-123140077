@@ -121,8 +121,4 @@ npm install
 **Import error backend:**
 - Pastikan file `meta.py` dan `review.py` ada di `backend/backend/models/`
 
-## 📝 License
-
-MIT License
-
 ---
