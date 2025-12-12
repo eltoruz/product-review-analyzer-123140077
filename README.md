@@ -102,6 +102,8 @@ product-review-analyzer/
     │   └── App.css
     └── package.json
 ```
+## 🧪 Hasil Proyek
+![alt text](https://github.com/user-attachments/assets/272ad6de-e0b7-441c-a0c4-7af07320443d)
 
 ## 🐛 Troubleshooting
 
