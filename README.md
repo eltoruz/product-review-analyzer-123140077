@@ -41,7 +41,7 @@ python -m venv venv
 source venv/bin/activate  # Linux/Mac: venv\Scripts\activate untuk Windows
 
 pip install -e ".[testing]"
-pip install huggingface_hub google-generativeai psycopg2-binary requests
+pip install google-generativeai psycopg2-binary 
 
 # Set API Keys
 export HUGGINGFACE_API_KEY="your_key_here"
