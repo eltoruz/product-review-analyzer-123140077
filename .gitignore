@@ -1,0 +1,17 @@
+# Ignore backend virtual environment
+/backend/env/
+backend/env/
+backend/.env
+
+# Common Python environment and build artifacts
+.env
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
